@@ -1,22 +1,29 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------- */
-/* Aura Catálogos — platform brand tokens (the product's own identity).   */
-/* Tenant catalog pages override --tc-* via inline styles, see lib/theme. */
+/* Aura Catálogos — platform brand tokens. Same DNA as Aura Soft          */
+/* Solutions (violet/blue/cyan on near-black) so the product reads as     */
+/* part of the same family. Tenant catalog pages override --tc-* via      */
+/* inline styles, see lib/theme — this palette never leaks into them.     */
 /* ---------------------------------------------------------------------- */
 :root {
-  --ink: #0c0c0d;
-  --ink-raised: #131211;
-  --ink-surface: #171615;
+  --ink: #050507;
+  --ink-raised: #0b0b10;
+  --ink-surface: #131218;
   --paper: #f5f2ea;
-  --line: rgba(245, 242, 234, 0.1);
-  --line-strong: rgba(245, 242, 234, 0.18);
-  --text: #f5f2ea;
-  --text-muted: #9c968a;
-  --text-faint: #6f6a60;
-  --accent: #f2542d;
-  --accent-strong: #ff7048;
-  --accent-ink: #200a04;
+  --line: rgba(245, 242, 250, 0.09);
+  --line-strong: rgba(245, 242, 250, 0.18);
+  --text: #f5f5f7;
+  --text-muted: #9a9aa5;
+  --text-faint: #6d6d78;
+
+  --violet: #8b6bff;
+  --blue: #4f7dff;
+  --cyan: #4fd1ff;
+
+  --accent: var(--violet);
+  --accent-strong: #a48bff;
+  --accent-ink: #0d0620;
 
   --font-display: var(--font-instrument-serif);
   --font-body: var(--font-geist-sans);
@@ -33,6 +40,9 @@
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-violet: var(--violet);
+  --color-blue: var(--blue);
+  --color-cyan: var(--cyan);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
@@ -48,18 +58,20 @@ html {
 
 body {
   background: var(--ink);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--violet);
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--violet);
   outline-offset: 3px;
 }
 
@@ -76,6 +88,100 @@ body {
   --tf-display: var(--font-bricolage);
   --tf-body: var(--font-manrope);
   --tf-mono: var(--font-jetbrains-mono);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Aura brand marks — shared visual language with Aura Soft Solutions.    */
+/* ---------------------------------------------------------------------- */
+.brand-aura {
+  animation: brand-aura-pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes brand-aura-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(139, 107, 255, 0.3), 0 0 18px rgba(79, 125, 255, 0.12);
+  }
+  50% {
+    text-shadow: 0 0 13px rgba(139, 107, 255, 0.48), 0 0 26px rgba(79, 125, 255, 0.22);
+  }
+}
+
+.text-gradient-brand {
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(139, 107, 255, 0.55), rgba(79, 125, 255, 0.18), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  opacity: 0.5;
+  will-change: transform, opacity;
+}
+
+@keyframes aurora-drift-left {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.42;
+  }
+  50% {
+    transform: translate(24px, -46px);
+    opacity: 0.62;
+  }
+}
+
+@keyframes aurora-drift-right {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.34;
+  }
+  50% {
+    transform: translate(-22px, 40px);
+    opacity: 0.5;
+  }
+}
+
+.animate-aurora-drift-left {
+  animation: aurora-drift-left 24s ease-in-out infinite;
+}
+
+.animate-aurora-drift-right {
+  animation: aurora-drift-right 28s ease-in-out infinite;
 }
 
 /* ---------------------------------------------------------------------- */

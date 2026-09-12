@@ -6,7 +6,15 @@ export function Footer() {
   return (
     <footer className="py-10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 text-sm" style={{ color: "var(--text-muted)" }}>
-        <span style={{ fontFamily: "var(--font-display)" }}>{auraBrand.parentCompany}</span>
+        <a
+          href={auraBrand.parentUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="brand-aura hover:text-[var(--text)]"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {auraBrand.parentCompany}
+        </a>
         <div className="flex gap-4">
           <a href={auraBrand.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-[var(--text)]">
             <InstagramIcon className="h-4 w-4" /> Instagram

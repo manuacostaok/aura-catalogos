@@ -14,17 +14,17 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#0c0c0d",
-          color: "#f5f2ea",
+          background: "#050507",
+          color: "#f5f5f7",
         }}
       >
-        <div style={{ display: "flex", fontSize: 28, fontWeight: 700, color: "#f2542d", marginBottom: 28 }}>
+        <div style={{ display: "flex", fontSize: 28, fontWeight: 700, color: "#8b6bff", marginBottom: 28 }}>
           AURA CATÁLOGOS
         </div>
         <div style={{ display: "flex", fontSize: 64, fontWeight: 700, lineHeight: 1.1, maxWidth: 900 }}>
           Tus productos ya están buenos. Que tu catálogo también.
         </div>
-        <div style={{ display: "flex", fontSize: 26, color: "#9c968a", marginTop: 32, maxWidth: 780 }}>
+        <div style={{ display: "flex", fontSize: 26, color: "#9a9aa5", marginTop: 32, maxWidth: 780 }}>
           Catálogos web con tu identidad y botón de WhatsApp directo — para cualquier rubro.
         </div>
       </div>

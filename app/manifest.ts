@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Catálogos web para cualquier rubro, con botón de WhatsApp directo.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0c0c0d",
-    theme_color: "#0c0c0d",
+    background_color: "#050507",
+    theme_color: "#050507",
     icons: [{ src: "/icon", sizes: "32x32", type: "image/png" }],
   };
 }

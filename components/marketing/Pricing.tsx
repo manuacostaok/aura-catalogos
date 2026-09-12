@@ -46,13 +46,17 @@ export function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className="flex h-full flex-col rounded-2xl border p-7"
-                style={
-                  plan.highlight
-                    ? { borderColor: "var(--accent)", background: "var(--ink-raised)" }
-                    : { borderColor: "var(--line)", background: "var(--ink-raised)" }
-                }
-              >
+              className={
+                plan.highlight
+                  ? "glass glow-border flex h-full flex-col rounded-2xl border p-7"
+                  : "flex h-full flex-col rounded-2xl border p-7"
+              }
+              style={
+                plan.highlight
+                  ? { borderColor: "var(--accent)" }
+                  : { borderColor: "var(--line)", background: "var(--ink-raised)" }
+              }
+            >
                 {plan.highlight && (
                   <span
                     className="mb-4 inline-block w-fit rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide"

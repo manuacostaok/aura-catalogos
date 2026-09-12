@@ -5,7 +5,8 @@
  */
 export const auraBrand = {
   name: "Aura Catálogos",
-  parentCompany: "Aura IA Solutions",
+  parentCompany: "Aura Soft Solutions",
+  parentUrl: "https://aura-soft-solutions.vercel.app",
   whatsapp: "5491165028141",
   instagram: "https://instagram.com/aura.soft.solutions",
 };

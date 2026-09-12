@@ -13,11 +13,22 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b backdrop-blur" style={{ borderColor: "var(--line)", background: "rgba(12,12,13,0.82)" }}>
+    <header className="sticky top-0 z-40 border-b backdrop-blur" style={{ borderColor: "var(--line)", background: "rgba(5,5,7,0.82)" }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-          Aura Catálogos
-        </Link>
+        <div className="flex items-baseline gap-3">
+          <Link href="/" className="brand-aura text-lg font-semibold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+            Aura Catálogos
+          </Link>
+          <a
+            href={auraBrand.parentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden text-[0.7rem] transition-colors hover:text-[var(--text)] lg:inline"
+            style={{ color: "var(--text-faint)" }}
+          >
+            por {auraBrand.parentCompany} ↗
+          </a>
+        </div>
         <nav className="hidden gap-7 text-sm md:flex" style={{ color: "var(--text-muted)" }}>
           {links.map((link) => (
             <a key={link.href} href={link.href} className="transition-colors hover:text-[var(--text)]">

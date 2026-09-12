@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { ProductArt } from "@/components/catalog/ProductArt";
 import { WhatsAppIcon } from "@/components/icons";
 import { formatPrice } from "@/lib/format";
@@ -12,18 +12,15 @@ const previewProducts = semillaFranca.products.slice(0, 3);
 export function LiveCatalogPreview() {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const cards = rootRef.current?.querySelectorAll("[data-preview-card]");
+  useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const cards = rootRef.current?.querySelectorAll<HTMLElement>("[data-preview-card]");
     if (!cards || cards.length === 0) return;
 
-    if (prefersReducedMotion) {
-      cards.forEach((card) => {
-        (card as HTMLElement).style.opacity = "1";
-        (card as HTMLElement).style.transform = "none";
-      });
-      return;
-    }
+    cards.forEach((card) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(24px)";
+    });
 
     let cancelled = false;
     import("animejs").then(({ animate, stagger }) => {
@@ -44,7 +41,7 @@ export function LiveCatalogPreview() {
   return (
     <div
       ref={rootRef}
-      className="overflow-hidden rounded-2xl border shadow-2xl shadow-black/40"
+      className="glow-border overflow-hidden rounded-2xl border shadow-2xl shadow-black/40"
       style={{ borderColor: "var(--line-strong)" }}
     >
       {/* browser chrome */}
@@ -91,7 +88,7 @@ export function LiveCatalogPreview() {
             <div
               key={product.id}
               data-preview-card
-              className="overflow-hidden rounded-xl border opacity-0"
+              className="overflow-hidden rounded-xl border"
               style={{ borderColor: "var(--tc-border)", background: "var(--tc-surface)" }}
             >
               <div className="h-20">

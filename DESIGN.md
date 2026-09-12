@@ -1,6 +1,6 @@
 # DESIGN.md — Aura Catálogos
 
-Fuente de verdad del sistema de diseño y la arquitectura de producto. Última actualización: 2026-09-11.
+Fuente de verdad del sistema de diseño y la arquitectura de producto. Última actualización: 2026-09-12.
 
 ## Qué es esto
 
@@ -87,28 +87,51 @@ suben fotos reales. Reemplazar por `<img>` es un cambio de un componente.
 
 ## Identidad visual — Aura Catálogos (la plataforma)
 
-Deliberadamente **distinta** de la de sus dos demos (para que no se
-confunda "el producto" con "un catálogo hecho con el producto") y de la
-identidad de Aura IA Solutions (la agencia matriz, otro repo, violeta/azul):
+Aura Catálogos es un producto **de** Aura Soft Solutions (la agencia que lo
+desarrolla) — no una marca aparte. Por eso su identidad comparte el ADN
+visual ya establecido en `aura-ia-solutions` (violeta/azul/cian sobre tinta
+casi negra, aurora, glass, glow) en vez de inventar una paleta propia:
 
-- **Paleta**: tinta casi negra (`#0c0c0d`) + un solo acento decidido, rojo
-  vermellón (`#f2542d`) — comercio, urgencia positiva, "andá y vendé" — sin
-  caer en el cliché azul/violeta de IA genérica.
+- **Paleta**: tinta casi negra (`#050507`, igual que el sitio madre) + trío
+  violeta/azul/cian (`--violet #8b6bff`, `--blue #4f7dff`, `--cyan #4fd1ff`)
+  como acento y gradientes — el mismo lenguaje cromático, no una copia pixel
+  a pixel de sus componentes.
 - **Tipografía**: Instrument Serif (display, editorial, con personalidad)
   + Geist Sans (cuerpo, moderno, no es Inter) + Geist Mono (precios/datos).
   Serif + grotesk es la combinación "SaaS con carácter editorial" que evita
   el look de plantilla genérica.
+- **Marcas compartidas** (`app/globals.css`): `.brand-aura` (glow pulsante
+  sobre el wordmark, igual clase y timing que el sitio madre), `.aurora-blob`
+  + `.animate-aurora-drift-*` (blobs violeta/cian a la deriva), `.glass` y
+  `.glow-border` (cards con borde que se ilumina al hover) — utilidades
+  reusadas tal cual porque ya están resueltas y son parte de la identidad de
+  familia, no reinventadas por reinventar.
+- **Link a la marca madre**: el wordmark del nav y el crédito del footer
+  apuntan a `auraBrand.parentUrl` (`https://aura-soft-solutions.vercel.app`,
+  ver `lib/aura-brand.ts`) — Aura Catálogos nunca se presenta como una marca
+  aislada.
 - **Composición**: hero asimétrico con el producto funcionando en vivo
   (mockup de navegador + catálogo real embebido y animado), no una
   ilustración decorativa. Features en formato lista editorial numerada, no
   tres cards repetidas. Rubros en mosaico con paleta propia por card —
   demuestra el theming en la misma sección que lo explica.
-- **Motion (anime.js)**: solo en tres lugares con propósito — entrada
-  escalonada de las cards del catálogo en vivo del hero, línea de progreso
-  dibujada en scroll en "Cómo funciona" (usa `onScroll` con `sync: true`,
-  así se recalcula sola sin importar desde dónde entra el usuario), y
-  transiciones CSS estándar en hovers/CTAs. Todo respeta
-  `prefers-reduced-motion` (desactivado globalmente en `globals.css`).
+- **Fondo del hero — "Catalog Field"** (`components/marketing/CatalogField.tsx`):
+  en vez de un blob decorativo genérico, un campo de nodos que representa
+  literalmente el producto — "un catálogo es una red de productos
+  conectados". Cada nodo se conecta solo a sus 1-2 vecinos más cercanos
+  (no a una malla densa) y flota con `anime.js` (`utils.random` por nodo,
+  sin patrón repetitivo). Es SVG + CSS, no WebGL — la galaxia 3D de
+  Three.js del sitio madre no se portó porque agregaría una dependencia
+  pesada solo por consistencia visual, sin aportar función al catálogo.
+- **Motion (anime.js)**: entrada escalonada del hero (headline + CTAs) y de
+  las cards del catálogo en vivo, drift de los nodos del fondo, y línea de
+  progreso dibujada en scroll en "Cómo funciona" (usa `onScroll` con
+  `sync: true`, así se recalcula sola sin importar desde dónde entra el
+  usuario). El resto son transiciones CSS estándar en hovers/CTAs. Todo
+  respeta `prefers-reduced-motion` (desactivado globalmente en
+  `globals.css`), y toda animación de entrada usa el patrón "visible por
+  default, JS oculta-y-revela antes del primer paint" — ver la sección
+  siguiente.
 
 ## Una lección de esta implementación: reveal-on-scroll y accesibilidad
 
