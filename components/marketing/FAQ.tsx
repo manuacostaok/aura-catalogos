@@ -30,7 +30,7 @@ export function FAQ() {
           <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
             Preguntas frecuentes
           </p>
-          <h2 className="mt-3 text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="mt-3 text-3xl sm:text-4xl font-display">
             Antes de escribirnos.
           </h2>
         

@@ -6,7 +6,7 @@ export default function NotFound() {
       <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
         Error 404
       </p>
-      <h1 className="mt-4 text-4xl sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
+      <h1 className="mt-4 text-4xl sm:text-5xl font-display">
         Esta página no existe.
       </h1>
       <p className="mt-4 max-w-md" style={{ color: "var(--text-muted)" }}>

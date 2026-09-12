@@ -1,33 +1,35 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------- */
-/* Aura Catálogos — platform brand tokens. Same DNA as Aura Soft          */
-/* Solutions (violet/blue/cyan on near-black) so the product reads as     */
-/* part of the same family. Tenant catalog pages override --tc-* via      */
-/* inline styles, see lib/theme — this palette never leaks into them.     */
+/* Aura Catálogos — platform brand tokens.                                */
+/* Concept: market-stall signage and shipping labels, not an "AI SaaS"    */
+/* dark-violet dashboard — kraft-warm ink, a single price-tag amber, and  */
+/* a stamped brick-red used sparingly. Tenant catalog pages override      */
+/* --tc-* via inline styles (see lib/theme) — this palette never leaks    */
+/* into them.                                                             */
 /* ---------------------------------------------------------------------- */
 :root {
-  --ink: #050507;
-  --ink-raised: #0b0b10;
-  --ink-surface: #131218;
+  --ink: #1a1512;
+  --ink-raised: #241d17;
+  --ink-surface: #2c241c;
   --paper: #f5f2ea;
-  --line: rgba(245, 242, 250, 0.09);
-  --line-strong: rgba(245, 242, 250, 0.18);
-  --text: #f5f5f7;
-  --text-muted: #9a9aa5;
-  --text-faint: #6d6d78;
+  --line: rgba(243, 234, 217, 0.1);
+  --line-strong: rgba(243, 234, 217, 0.2);
+  --text: #f3ead9;
+  --text-muted: #ab9c88;
+  --text-faint: #756554;
 
-  --violet: #8b6bff;
-  --blue: #4f7dff;
-  --cyan: #4fd1ff;
+  --amber: #f0a93a;
+  --amber-strong: #ffc15e;
+  --stamp: #c4432d;
 
-  --accent: var(--violet);
-  --accent-strong: #a48bff;
-  --accent-ink: #0d0620;
+  --accent: var(--amber);
+  --accent-strong: var(--amber-strong);
+  --accent-ink: #241704;
 
-  --font-display: var(--font-instrument-serif);
-  --font-body: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-big-shoulders);
+  --font-body: var(--font-schibsted-grotesk);
+  --font-mono: var(--font-space-mono);
 }
 
 @theme inline {
@@ -40,9 +42,8 @@
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
-  --color-violet: var(--violet);
-  --color-blue: var(--blue);
-  --color-cyan: var(--cyan);
+  --color-amber: var(--amber);
+  --color-stamp: var(--stamp);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
@@ -58,7 +59,7 @@ html {
 
 body {
   background: var(--ink);
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(243, 234, 217, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
   color: var(--text);
   font-family: var(--font-body);
@@ -66,12 +67,12 @@ body {
 }
 
 ::selection {
-  background: var(--violet);
-  color: #fff;
+  background: var(--amber);
+  color: var(--accent-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--violet);
+  outline: 2px solid var(--amber);
   outline-offset: 3px;
 }
 
@@ -91,7 +92,7 @@ body {
 }
 
 /* ---------------------------------------------------------------------- */
-/* Aura brand marks — shared visual language with Aura Soft Solutions.    */
+/* Aura brand marks                                                       */
 /* ---------------------------------------------------------------------- */
 .brand-aura {
   animation: brand-aura-pulse 4.5s ease-in-out infinite;
@@ -100,22 +101,22 @@ body {
 @keyframes brand-aura-pulse {
   0%,
   100% {
-    text-shadow: 0 0 8px rgba(139, 107, 255, 0.3), 0 0 18px rgba(79, 125, 255, 0.12);
+    text-shadow: 0 0 8px rgba(240, 169, 58, 0.3), 0 0 18px rgba(196, 67, 45, 0.14);
   }
   50% {
-    text-shadow: 0 0 13px rgba(139, 107, 255, 0.48), 0 0 26px rgba(79, 125, 255, 0.22);
+    text-shadow: 0 0 14px rgba(240, 169, 58, 0.5), 0 0 28px rgba(196, 67, 45, 0.26);
   }
 }
 
 .text-gradient-brand {
-  background: linear-gradient(90deg, var(--violet), var(--blue));
+  background: linear-gradient(90deg, var(--amber), var(--stamp));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .glass {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  background: linear-gradient(180deg, rgba(243, 234, 217, 0.06), rgba(243, 234, 217, 0.015));
   border: 1px solid var(--line);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -131,7 +132,7 @@ body {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(139, 107, 255, 0.55), rgba(79, 125, 255, 0.18), transparent 60%);
+  background: linear-gradient(135deg, rgba(240, 169, 58, 0.6), rgba(196, 67, 45, 0.2), transparent 60%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -144,11 +145,20 @@ body {
   opacity: 1;
 }
 
+/* Ink-stamp badge — rotated, textured like a rubber stamp on a shipping label. */
+.stamp-badge {
+  display: inline-block;
+  transform: rotate(-3deg);
+  border: 2px solid var(--stamp);
+  color: var(--stamp);
+  border-radius: 4px;
+}
+
 .aurora-blob {
   position: absolute;
   border-radius: 9999px;
   filter: blur(110px);
-  opacity: 0.5;
+  opacity: 0.4;
   will-change: transform, opacity;
 }
 
@@ -156,11 +166,11 @@ body {
   0%,
   100% {
     transform: translate(0, 0);
-    opacity: 0.42;
+    opacity: 0.32;
   }
   50% {
     transform: translate(24px, -46px);
-    opacity: 0.62;
+    opacity: 0.48;
   }
 }
 
@@ -168,11 +178,11 @@ body {
   0%,
   100% {
     transform: translate(0, 0);
-    opacity: 0.34;
+    opacity: 0.26;
   }
   50% {
     transform: translate(-22px, 40px);
-    opacity: 0.5;
+    opacity: 0.4;
   }
 }
 
@@ -215,4 +225,15 @@ body {
 
 .balance {
   text-wrap: balance;
+}
+
+/*
+ * Big Shoulders Display is only loaded at weights 600-900 (see layout.tsx) —
+ * text below 600 falls back to a system font since that weight isn't
+ * embedded. Every element using the platform display font goes through
+ * this class instead of a bare font-family so it never silently degrades.
+ */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
 }

@@ -37,7 +37,7 @@ export function Features() {
     <section className="border-b py-16 sm:py-24" style={{ borderColor: "var(--line)" }}>
       <div className="mx-auto max-w-6xl px-6">
         
-          <h2 className="balance max-w-xl text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance max-w-xl text-3xl sm:text-4xl font-display">
             Todo lo que necesita un catálogo de verdad.
           </h2>
         
@@ -52,7 +52,7 @@ export function Features() {
               <span className="text-sm font-semibold" style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>
                 {feature.n}
               </span>
-              <h3 className="text-lg font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+              <h3 className="text-lg font-semibold font-display">
                 {feature.title}
               </h3>
               <p className="text-sm leading-relaxed sm:text-base" style={{ color: "var(--text-muted)" }}>

@@ -48,7 +48,7 @@ export function HowItWorks() {
           <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
             Cómo funciona
           </p>
-          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl font-display">
             De tu Instagram a tu catálogo, en cuatro pasos.
           </h2>
         
@@ -74,7 +74,7 @@ export function HowItWorks() {
                 >
                   {i + 1}
                 </span>
-                <h3 className="text-base font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+                <h3 className="text-base font-semibold font-display">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>

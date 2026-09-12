@@ -66,7 +66,7 @@ function buildEdges(nodes: Node[]) {
 
 const nodes = buildNodes();
 const edges = buildEdges(nodes);
-const toneColor = ["var(--violet)", "var(--blue)", "var(--cyan)"];
+const toneColor = ["var(--amber)", "var(--stamp)", "var(--text-muted)"];
 
 export function CatalogField() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -99,11 +99,11 @@ export function CatalogField() {
     <div ref={rootRef} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
         className="aurora-blob animate-aurora-drift-left h-[70vh] w-[26rem]"
-        style={{ top: "-18%", left: "-10%", background: "var(--violet)" }}
+        style={{ top: "-18%", left: "-10%", background: "var(--amber)" }}
       />
       <div
         className="aurora-blob animate-aurora-drift-right h-[60vh] w-[22rem]"
-        style={{ top: "-8%", right: "-12%", background: "var(--cyan)" }}
+        style={{ top: "-8%", right: "-12%", background: "var(--stamp)" }}
       />
       <svg
         viewBox="0 0 100 100"
@@ -121,7 +121,7 @@ export function CatalogField() {
             y1={edge.y1}
             x2={edge.x2}
             y2={edge.y2}
-            stroke="var(--violet)"
+            stroke="var(--amber)"
             strokeWidth="0.12"
             opacity={edge.strength * 0.35}
           />

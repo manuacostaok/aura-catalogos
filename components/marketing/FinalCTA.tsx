@@ -7,7 +7,7 @@ export function FinalCTA() {
     <section className="border-b py-20 text-center sm:py-28" style={{ borderColor: "var(--line)" }}>
       <div className="mx-auto max-w-2xl px-6">
         
-          <h2 className="balance text-3xl sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance text-3xl sm:text-5xl font-display">
             Armemos el catálogo de tu cuenta.
           </h2>
           <p className="mt-4 text-base sm:text-lg" style={{ color: "var(--text-muted)" }}>

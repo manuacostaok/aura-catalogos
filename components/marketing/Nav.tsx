@@ -13,10 +13,10 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b backdrop-blur" style={{ borderColor: "var(--line)", background: "rgba(5,5,7,0.82)" }}>
+    <header className="sticky top-0 z-40 border-b backdrop-blur" style={{ borderColor: "var(--line)", background: "rgba(26,21,18,0.82)" }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <div className="flex items-baseline gap-3">
-          <Link href="/" className="brand-aura text-lg font-semibold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+          <Link href="/" className="brand-aura font-display text-lg tracking-tight">
             Aura Catálogos
           </Link>
           <a

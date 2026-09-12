@@ -10,8 +10,7 @@ export function Footer() {
           href={auraBrand.parentUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="brand-aura hover:text-[var(--text)]"
-          style={{ fontFamily: "var(--font-display)" }}
+          className="brand-aura font-display hover:text-[var(--text)]"
         >
           {auraBrand.parentCompany}
         </a>

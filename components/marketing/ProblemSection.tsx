@@ -22,7 +22,7 @@ export function ProblemSection() {
           <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
             El problema de vender solo por DM
           </p>
-          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl font-display">
             Tus seguidores quieren comprar. El chat no alcanza.
           </h2>
         
@@ -30,7 +30,7 @@ export function ProblemSection() {
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border sm:grid-cols-3" style={{ borderColor: "var(--line)", background: "var(--line)" }}>
           {pains.map((pain) => (
             <div key={pain.q} className="h-full px-6 py-8" style={{ background: "var(--ink)" }}>
-              <p className="text-lg font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+              <p className="text-lg font-semibold font-display">
                 “{pain.q}”
               </p>
               <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>

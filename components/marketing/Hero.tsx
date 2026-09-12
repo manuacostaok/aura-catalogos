@@ -17,10 +17,7 @@ export function Hero() {
           >
             Catálogos web para cualquier rubro
           </p>
-          <h1
-            className="hero-reveal-item balance text-4xl leading-[1.05] sm:text-5xl lg:text-6xl"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
+          <h1 className="hero-reveal-item font-display balance text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
             Tus productos ya están buenos.
             <br />
             <em className="text-gradient-brand not-italic">Que tu catálogo también.</em>

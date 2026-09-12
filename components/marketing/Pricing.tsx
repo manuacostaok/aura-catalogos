@@ -37,7 +37,7 @@ export function Pricing() {
           <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
             Planes · precio de lanzamiento
           </p>
-          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl font-display">
             Empezá simple. Sumá lo que necesites después.
           </h2>
         
@@ -59,13 +59,13 @@ export function Pricing() {
             >
                 {plan.highlight && (
                   <span
-                    className="mb-4 inline-block w-fit rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide"
-                    style={{ background: "var(--accent)", color: "var(--accent-ink)" }}
+                    className="stamp-badge mb-4 w-fit px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide"
+                    style={{ fontFamily: "var(--font-mono)" }}
                   >
                     Más pedido
                   </span>
                 )}
-                <h3 className="text-lg font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+                <h3 className="text-lg font-semibold font-display">
                   {plan.name}
                 </h3>
                 <p className="mt-3 text-3xl font-bold" style={{ fontFamily: "var(--font-mono)" }}>

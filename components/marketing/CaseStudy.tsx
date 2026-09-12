@@ -15,7 +15,7 @@ export function CaseStudy() {
           <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
             Casos reales
           </p>
-          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl font-display">
             Dos rubros distintos, el mismo motor de catálogo.
           </h2>
           <p className="mt-3 max-w-xl text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>

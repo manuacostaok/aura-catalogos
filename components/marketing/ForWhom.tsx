@@ -16,7 +16,7 @@ export function ForWhom() {
           <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
             Para qué negocios sirve
           </p>
-          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="balance mt-3 max-w-2xl text-3xl sm:text-4xl font-display">
             Si vendés por Instagram o WhatsApp, sirve para vos.
           </h2>
           <p className="mt-3 max-w-xl text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
@@ -33,7 +33,7 @@ export function ForWhom() {
               style={{ background: niche.bg, borderColor: "var(--line)" }}
             >
               <span className="block h-2 w-8 rounded-full" style={{ background: niche.accent }} />
-              <h3 className="mt-4 text-lg font-semibold text-white" style={{ fontFamily: "var(--font-display)" }}>
+              <h3 className="mt-4 text-lg font-semibold text-white font-display">
                 {niche.name}
               </h3>
               <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>

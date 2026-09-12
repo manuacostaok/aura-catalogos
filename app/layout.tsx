@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
 import {
+  Big_Shoulders,
   Bricolage_Grotesque,
   Fraunces,
-  Geist,
-  Geist_Mono,
   IBM_Plex_Mono,
-  Instrument_Serif,
   JetBrains_Mono,
   Manrope,
+  Schibsted_Grotesk,
+  Space_Mono,
   Work_Sans,
 } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const bigShoulders = Big_Shoulders({
+  variable: "--font-big-shoulders",
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["600", "700", "800", "900"],
 });
+const schibstedGrotesk = Schibsted_Grotesk({ variable: "--font-schibsted-grotesk", subsets: ["latin"] });
+const spaceMono = Space_Mono({ variable: "--font-space-mono", subsets: ["latin"], weight: ["400", "700"] });
 
 // Tenant font presets — loaded once here, selected per-tenant via CSS (see globals.css).
 const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"] });
@@ -72,13 +71,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#050507",
+  themeColor: "#1a1512",
 };
 
 const fontVariables = [
-  geistSans.variable,
-  geistMono.variable,
-  instrumentSerif.variable,
+  bigShoulders.variable,
+  schibstedGrotesk.variable,
+  spaceMono.variable,
   fraunces.variable,
   workSans.variable,
   ibmPlexMono.variable,

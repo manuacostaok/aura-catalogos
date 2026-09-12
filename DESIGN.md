@@ -69,9 +69,18 @@ atributo `data-font-preset` (ver `app/globals.css`):
 
 | Preset | Uso | Display | Body | Mono |
 | --- | --- | --- | --- | --- |
-| `platform` | Aura Catálogos (marketing) | Instrument Serif | Geist Sans | Geist Mono |
+| `platform` | Aura Catálogos (marketing) | Big Shoulders | Schibsted Grotesk | Space Mono |
 | `editorial-warm` | Semilla Franca (grow shop) | Fraunces | Work Sans | IBM Plex Mono |
 | `editorial-bold` | Vera Studio (indumentaria) | Bricolage Grotesque | Manrope | JetBrains Mono |
+
+Big Shoulders solo está cargado en pesos 600-900 (`app/layout.tsx`) — es una
+fuente condensada pensada para títulos, no para texto liviano. Por eso todo
+texto de plataforma en esta fuente pasa por la clase `.font-display`
+(`app/globals.css`), que fija `font-weight: 700`; nunca se usa
+`fontFamily: var(--font-display)` suelto en un `style`, porque un peso no
+cargado se resuelve al más cercano disponible en vez de fallar silencioso,
+pero es fácil perder de vista qué pesos están cargados si cada componente
+lo declara por separado.
 
 Sumar un preset nuevo es agregar una entrada a esta tabla + una regla CSS;
 no requiere tocar componentes. (Fuentes 100% libres a medida sí requieren
@@ -88,28 +97,40 @@ suben fotos reales. Reemplazar por `<img>` es un cambio de un componente.
 ## Identidad visual — Aura Catálogos (la plataforma)
 
 Aura Catálogos es un producto **de** Aura Soft Solutions (la agencia que lo
-desarrolla) — no una marca aparte. Por eso su identidad comparte el ADN
-visual ya establecido en `aura-ia-solutions` (violeta/azul/cian sobre tinta
-casi negra, aurora, glass, glow) en vez de inventar una paleta propia:
+desarrolla) — el nav y el footer linkean a `auraBrand.parentUrl`
+(`https://aura-soft-solutions.vercel.app`, ver `lib/aura-brand.ts`), y la
+clase `.brand-aura` (glow pulsante en el wordmark) es el mismo *patrón* de
+marca que usa el sitio madre. Pero **no comparte su paleta**: un primer
+intento clonó el violeta/azul/cian de `aura-ia-solutions` y el resultado leía
+como "otra landing de IA genérica" — el feedback fue directo, y las
+tendencias 2026 lo confirman: el gradiente violeta sobre tinta ya es el
+cliché reconocible de "hecho con IA", no una identidad.
 
-- **Paleta**: tinta casi negra (`#050507`, igual que el sitio madre) + trío
-  violeta/azul/cian (`--violet #8b6bff`, `--blue #4f7dff`, `--cyan #4fd1ff`)
-  como acento y gradientes — el mismo lenguaje cromático, no una copia pixel
-  a pixel de sus componentes.
-- **Tipografía**: Instrument Serif (display, editorial, con personalidad)
-  + Geist Sans (cuerpo, moderno, no es Inter) + Geist Mono (precios/datos).
-  Serif + grotesk es la combinación "SaaS con carácter editorial" que evita
-  el look de plantilla genérica.
-- **Marcas compartidas** (`app/globals.css`): `.brand-aura` (glow pulsante
-  sobre el wordmark, igual clase y timing que el sitio madre), `.aurora-blob`
-  + `.animate-aurora-drift-*` (blobs violeta/cian a la deriva), `.glass` y
-  `.glow-border` (cards con borde que se ilumina al hover) — utilidades
-  reusadas tal cual porque ya están resueltas y son parte de la identidad de
-  familia, no reinventadas por reinventar.
-- **Link a la marca madre**: el wordmark del nav y el crédito del footer
-  apuntan a `auraBrand.parentUrl` (`https://aura-soft-solutions.vercel.app`,
-  ver `lib/aura-brand.ts`) — Aura Catálogos nunca se presenta como una marca
-  aislada.
+**Concepto: cartelería de mercado / etiqueta de precio.** En vez de imitar
+un dashboard de SaaS, la estética toma prestado del mundo real de quien
+vende por WhatsApp — cartelería de feria, etiquetas de precio, sellos de
+envío. Es honesto con lo que el producto hace (ayudar a mostrar productos
+mejor) en vez de pedir prestado el lenguaje visual de "startup de IA".
+
+- **Paleta**: tinta cálida tipo cartón kraft (`--ink #1a1512`, no negro frío)
+  + un acento decidido ámbar/mostaza de etiqueta de oferta (`--amber
+  #f0a93a`) + un rojo sello usado con cuidado (`--stamp #c4432d`, solo en el
+  badge "Más pedido" y en el fondo animado) — nunca los tres a la vez en la
+  misma superficie.
+- **Tipografía**: *Big Shoulders* (display, condensada e industrial — cartel
+  de mercado, no serif editorial genérica) + *Schibsted Grotesk* (cuerpo,
+  cálida, poco vista en SaaS) + *Space Mono* (precios — a propósito parecida
+  a una máquina de etiquetar). Ninguna de las tres se repite en las demos
+  (Fraunces/Work Sans en Semilla Franca, Bricolage/Manrope en Vera Studio),
+  así que no hay ambigüedad sobre qué es la plataforma y qué es un catálogo.
+- **`.stamp-badge`** (`app/globals.css`): insignia rotada -3° con borde rojo,
+  como un sello de goma sobre una etiqueta de envío — usada en el badge
+  "Más pedido" de Pricing en vez de una píldora genérica.
+- **Utilidades heredadas de la exploración violeta** (`.glass`, `.glow-border`,
+  `.aurora-blob` + `.animate-aurora-drift-*`, `.text-gradient-brand`):
+  se mantuvieron como mecanismo (blobs a la deriva, borde que se ilumina al
+  hover) pero recoloreadas a ámbar/rojo — la utilidad era buena, el color
+  violeta era el problema.
 - **Composición**: hero asimétrico con el producto funcionando en vivo
   (mockup de navegador + catálogo real embebido y animado), no una
   ilustración decorativa. Features en formato lista editorial numerada, no
